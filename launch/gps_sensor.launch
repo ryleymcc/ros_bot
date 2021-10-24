@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+    <remap from="/fix" to="/gps/fix" />
+    <remap from="/heading" to="/gps/heading_raw" />
+    <remap from="/vel" to="/gps/vel_raw" />
+    <remap from="/time_reference" to="/gps/time_refrence" />
+    <node name="gps" pkg="nmea_navsat_driver" type="nmea_serial_driver">
+        <param name="port" type="string" value="/dev/ttyACM0"/>
+        <param name="frame_id" type="string" value="gps"/>
+    </node>
+    
+</launch>

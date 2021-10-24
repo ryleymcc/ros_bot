@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find robot_base)/launch/imu_filter.launch"/>
+       
+    <include file="$(find robot_base)/launch/gps_sensor.launch"/>
+    
+    <include file="$(find robot_base)/launch/rs_d400_and_t265.launch" />
+    <include file="$(find robot_base)/launch/localization.launch" />
+    <include file="$(find robot_base)/launch/rtabmap.launch" >
+        <arg name="args" value="-d --Mem/UseOdomGravity true --Optimizer/GravitySigma 0.3" />
+        <arg name="odom_topic" value="/odometry/filtered"/>
+        <arg name="frame_id" value="t265_link"/>
+        <arg name="rgbd_sync" value="true"/>
+        <arg name="depth_topic" value="/d400/aligned_depth_to_color/image_raw"/>
+        <arg name="rgb_topic" value="/d400/color/image_raw"/>
+        <arg name="camera_info_topic" value="/d400/color/camera_info"/>
+        <arg name="approx_rgbd_sync" value="false"/>
+        <arg name="visual_odometry" value="false"/>
+        <arg name="scan_cloud_filtered" value="true" />
+        <arg name="gen_depth_fill_holes_size" value="1" />
+        <arg name="gen_cloud" value="false"/>
+        <arg name="publish_tf_odom" value="false"/>
+        <arg name="publish_tf_map" value="true"/>
+
+
+        <arg name="scan_cloud_assembling" value="false" />
+        <arg name="scan_cloud_assembling_time" value="1" />
+        <arg name="scan_cloud_assembling_max_clouds" value="0" />
+        <arg name="scan_cloud_assembling_voxel_size" value="0" />
+        <arg name="scan_cloud_assembling_range_min" value="0" />
+        <arg name="scan_cloud_assembling_range_max" value="15" />
+        <arg name="scan_cloud_assembling_noise_radius" value=".1" />
+        <arg name="scan_cloud_assembling_noise_min_neighbors" value="1000" />
+
+    </include>
+
+</launch>

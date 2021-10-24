@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find robot_base)/launch/imu_filter.launch"/>
+       
+    <include file="$(find robot_base)/launch/gps_sensor.launch"/>
+    
+    <include file="$(find robot_base)/launch/rs_d400_and_t265.launch" />
+    
+    <include file="$(find robot_base)/launch/localization.launch" />
+</launch>
